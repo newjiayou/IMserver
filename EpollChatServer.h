@@ -9,6 +9,9 @@
 #include <memory>
 #include <mutex>
 #include <mysql/mysql.h> // 新增：MySQL 头文件
+#include <chrono>
+#include <iomanip>
+#include <sstream>
 // 客户端连接状态上下文
 struct ClientContext {
     int fd;
@@ -51,8 +54,9 @@ private:
     void sendPacket(int fd, uint16_t type, const std::string& data);
    //---------接入数据库-------------
     void saveMessageToDB(const std::string& sender, const std::string& target, const std::string& content);
-    
+    bool checkLoginFromDatabase(const std::string& inputUser, const std::string& inputPass);
     // 初始化数据库连接
     bool initDB();
+    std::string getServerTimeStr(); 
 };
 #endif // EPOLL_CHAT_SERVER_H
