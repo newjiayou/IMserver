@@ -1,4 +1,14 @@
+# 编译产物
 build/
 chat_server
 *.o
+
+# 数据库和结果
 *.db
+bench_chat_results/
+
+# 忽略日志文件
+*.log
+
+# 如果 scripts 文件夹里有你想忽略的临时数据，可以写成：
+# scripts/*.tmp
